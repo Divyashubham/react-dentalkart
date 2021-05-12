@@ -235,7 +235,11 @@ export const Home = () => {
               {},
               {}
             ],
-            images: ['1abc', 'bcd', 'cde']
+            images: [
+              'https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg',
+              'bcd',
+              'cde'
+            ]
           },
           { header: 'super endo', images: ['2abc', 'bcd', 'cde'] },
           { header: 'best seller', images: ['3abc', 'bcd', 'cde'] },
@@ -299,7 +303,8 @@ export const Home = () => {
                 {item.images.map((image, index) => {
                   return (
                     <Card key={index} className={classes.banner}>
-                      {image}
+                      {/* {image} */}
+                      <img src={image} />
                     </Card>
                   );
                 })}
