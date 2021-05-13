@@ -29,13 +29,14 @@ const useStyles = makeStyles(theme => ({
   },
   topBand: {
     display: 'flex',
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
+     
   },
   topBandItems: {
     padding: '4px 8px'
   },
   root: {
-    flexGrow: 1
+    flexGrow: 1, 
   },
   search: {
     position: 'relative',
@@ -71,14 +72,16 @@ const useStyles = makeStyles(theme => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '20ch'
+      width: '50ch'
     }
   },
   menuButton: {
     marginRight: theme.spacing(2)
   },
   title: {
-    flexGrow: 1
+    flexGrow: 2,
+    
+  
   },
   pageContent: {
     height: 'calc(100% - 128px)',
@@ -127,7 +130,7 @@ export const Home = () => {
   return (
     <div className={classes.homeContainer}>
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar position="static"  style={{background:"black"}}>
           <Toolbar>
             <div className={classes.title} />
             <Button color="inherit">download our app</Button>
@@ -220,7 +223,7 @@ export const Home = () => {
             header: 'covid 19 best seller',
             products: [
               {
-                image: '',
+                image: 'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
                 header: '',
                 subHeader: '',
                 oldCost: '',
@@ -229,34 +232,78 @@ export const Home = () => {
                 stars: '',
                 reviews: ''
               },
-              {},
-              {},
-              {},
-              {},
-              {}
+              {image: '',
+                header: '',
+                subHeader: '',
+                oldCost: '',
+                newCost: '',
+                discount: '',
+                stars: '',
+                reviews: ''},
+              {image: '',
+                header: '',
+                subHeader: '',
+                oldCost: '',
+                newCost: '',
+                discount: '',
+                stars: '',
+                reviews: ''},
+              {image: '',
+                header: '',
+                subHeader: '',
+                oldCost: '',
+                newCost: '',
+                discount: '',
+                stars: '',
+                reviews: ''},
+              {image: '',
+                header: '',
+                subHeader: '',
+                oldCost: '',
+                newCost: '',
+                discount: '',
+                stars: '',
+                reviews: ''},
+              {image: '',
+                header: '',
+                subHeader: '',
+                oldCost: '',
+                newCost: '',
+                discount: '',
+                stars: '',
+                reviews: ''}
             ],
             images: [
               'https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg',
-              'bcd',
-              'cde'
+              'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg',
+              'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'
             ]
           },
-          { header: 'super endo', images: ['2abc', 'bcd', 'cde'] },
-          { header: 'best seller', images: ['3abc', 'bcd', 'cde'] },
-          { header: 'covid 19 best seller', images: ['4abc', 'bcd', 'cde'] },
-          { header: 'covid 19 best seller', images: ['5abc', 'bcd', 'cde'] },
-          { header: 'covid 19 best seller', images: ['abc', 'bcd', 'cde'] },
-          { header: 'covid 19 best seller', images: ['abc', 'bcd', 'cde'] },
-          { header: 'covid 19 best seller', images: ['abc', 'bcd', 'cde'] },
-          { header: 'covid 19 best seller', images: ['abc', 'bcd', 'cde'] },
-          { header: 'covid 19 best seller', images: ['abc', 'bcd', 'cde'] }
+          { header: 'super endo',
+           images: ['https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'] },
+          { header: 'best seller',
+           images: ['https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'] },
+          { header: 'covid 19 best seller', 
+          images: ['https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'] },
+          { header: 'covid 19 best seller',
+           images: ['https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'] },
+          { header: 'covid 19 best seller',
+           images: ['https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'] },
+          { header: 'covid 19 best seller',
+           images: ['https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'] },
+          { header: 'covid 19 best seller',
+           images: ['https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'] },
+          { header: 'covid 19 best seller',
+           images: ['https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'] },
+          { header: 'covid 19 best seller',
+           images: ['https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'] }
         ].map((item, index) => {
           return (
             <div key={index}>
               <Card className={classes.productContainer}>
                 <CardHeader
                   action={
-                    <Button variant="contained" color="primary">
+                    <Button variant="contained" color="secondary">
                       View All
                     </Button>
                   }
@@ -271,7 +318,7 @@ export const Home = () => {
                           <CardActionArea>
                             <CardMedia
                               className={classes.media}
-                              image="https://material-ui.com/static/images/cards/contemplative-reptile.jpg"
+                              image="https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg"
                               title="Contemplative Reptile"
                             />
                             <CardContent>
@@ -305,6 +352,7 @@ export const Home = () => {
                     <Card key={index} className={classes.banner}>
                       {/* {image} */}
                       <img src={image} />
+                      
                     </Card>
                   );
                 })}
@@ -316,59 +364,59 @@ export const Home = () => {
           <AppBar position="static">
             <Toolbar>
               <div>
-                <div>abc</div>
-                <div>abc</div>
-                <div>abc</div>
-                <div>abc</div>
-                <div>abc</div>
+                <div>About</div>
+                <div>Contact Us</div>
+                <div>careers</div>
+                <div>Dealer Partnership</div>
+                <div>Blog</div>
               </div>
               <div className={classes.title} />
 
               <div>
-                <div>abc</div>
-                <div>abc</div>
-                <div>abc</div>
-                <div>abc</div>
-                <div>abc</div>
+                <div>Order</div>
+                <div>Refund</div>
+                <div>Payments</div>
+                <div>Rewards</div>
+                <div>dentalkart</div>
               </div>
               <div className={classes.title} />
 
               <div>
-                <div>abc</div>
-                <div>abc</div>
-                <div>abc</div>
-                <div>abc</div>
-                <div>abc</div>
+                <div>Return Policy</div>
+                <div>Terms of Use</div>
+                <div>Privacy</div>
+                <div>Sitemap</div>
+               
               </div>
               <div className={classes.title} />
 
               <div>
-                <div>abc</div>
-                <div>abc</div>
-                <div>abc</div>
-                <div>abc</div>
-                <div>abc</div>
+                <div>facebook</div>
+                <div>twiter</div>
+                <div>pintrest</div>
+                <div>Youtube</div>
+                <div>Linkdin</div>
+                 <div>Instagram</div>
               </div>
               <div className={classes.title} />
 
               <div>
-                <div>abc</div>
-                <div>abc</div>
-                <div>abc</div>
-                <div>abc</div>
-                <div>abc</div>
+                <div>VASA Denticity Pvt. Ltd.,</div>
+                <div>Khasra No. 714, Village, P.O.- Chattarpur,</div>
+                <div>Opp. DLF Gate No.-2,</div>
+                <div>Near Geetanjali Salon</div>
+                <div>New Delhi, India, 110074</div>
+                <div>+91-728-9999-456-Mon to Sat (10:00 AM to 7:00 PM)</div>
               </div>
               <div className={classes.title} />
               <div>
-                <div>abc</div>
-                <div>abc</div>
-                <div>abc</div>
-                <div>abc</div>
-                <div>abc</div>
+                <div>Android IOS </div>
+                {/* <div>IOS</div> */}
+                
               </div>
             </Toolbar>
           </AppBar>
-          <AppBar position="static">
+          <AppBar position="static" border="3px">
             <Toolbar>
               <div className={classes.title} />
               <span color="inherit">
