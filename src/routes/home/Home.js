@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -22,6 +22,26 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Divider from '@material-ui/core/Divider';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import Typography from '@material-ui/core/Typography';
+import StarIcon from '@material-ui/icons/Star';
+import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
+
+import { motion } from 'framer-motion';
+
+const imgBoxVariants = {
+  hidden: {
+    x: 500,
+    opacity: 0
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      delay: 0.5,
+      duration: 0.5
+    }
+  }
+};
 
 const useStyles = makeStyles(theme => ({
   homeContainer: {
@@ -29,14 +49,13 @@ const useStyles = makeStyles(theme => ({
   },
   topBand: {
     display: 'flex',
-    justifyContent: 'flex-end',
-     
+    justifyContent: 'flex-end'
   },
   topBandItems: {
     padding: '4px 8px'
   },
   root: {
-    flexGrow: 1, 
+    flexGrow: 1
   },
   search: {
     position: 'relative',
@@ -79,9 +98,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(2)
   },
   title: {
-    flexGrow: 2,
-    
-  
+    flexGrow: 2
   },
   pageContent: {
     height: 'calc(100% - 128px)',
@@ -116,6 +133,804 @@ const useStyles = makeStyles(theme => ({
 export const Home = () => {
   const classes = useStyles();
 
+  const dataArray = [
+    {
+      header: 'covid 19 best seller',
+      products: [
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '4',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '3',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        }
+      ],
+      images: [
+        'https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg',
+        'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg',
+        'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'
+      ]
+    },
+    {
+      header: 'super endo',
+      products: [
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        }
+      ],
+      images: [
+        'https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg',
+        'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg',
+        'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'
+      ]
+    },
+    {
+      header: 'best seller',
+      products: [
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        }
+      ],
+      images: [
+        'https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg',
+        'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg',
+        'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'
+      ]
+    },
+    {
+      header: 'covid 19 best seller',
+      products: [
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        }
+      ],
+      images: [
+        'https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg',
+        'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg',
+        'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'
+      ]
+    },
+    {
+      header: 'covid 19 best seller',
+      products: [
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        }
+      ],
+      images: [
+        'https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg',
+        'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg',
+        'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'
+      ]
+    },
+    {
+      header: 'covid 19 best seller',
+      products: [
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        }
+      ],
+      images: [
+        'https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg',
+        'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg',
+        'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'
+      ]
+    },
+    {
+      header: 'covid 19 best seller',
+      products: [
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        }
+      ],
+      images: [
+        'https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg',
+        'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg',
+        'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'
+      ]
+    },
+    {
+      header: 'covid 19 best seller',
+      products: [
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        }
+      ],
+      images: [
+        'https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg',
+        'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg',
+        'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'
+      ]
+    },
+    {
+      header: 'covid 19 best seller',
+      products: [
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        }
+      ],
+      images: [
+        'https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg',
+        'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg',
+        'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'
+      ]
+    },
+    {
+      header: 'covid 19 best seller',
+      products: [
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        },
+        {
+          image:
+            'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
+          header: 'Finger Pulse Oximeter With TFT Display',
+          subHeader: 'Heart rate,SpO2 PR pulse oximeter',
+          oldCost: '2200',
+          newCost: '850',
+          discount: '61.4',
+          stars: '5',
+          reviews: '4'
+        }
+      ],
+      images: [
+        'https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg',
+        'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg',
+        'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'
+      ]
+    }
+  ];
+
+  const topBrands = [
+    {
+      image: 'https://images.dentalkart.com/media/brand//d/r/dr.-morepen.jpg',
+      name: 'Dr. Morepen'
+    },
+    {
+      image: 'https://images.dentalkart.com/media/brand//w/a/waldent_fine_instrument.png',
+      name: 'Waldent'
+    },
+    {
+      image: 'https://images.dentalkart.com/media/brand//d/r/dr.-morepen.jpg',
+      name: 'Dr. Morepen'
+    },
+    {
+      image: 'https://images.dentalkart.com/media/brand//d/r/dr.-morepen.jpg',
+      name: 'Dr. Morepen'
+    },
+    {
+      image: 'https://images.dentalkart.com/media/brand//d/r/dr.-morepen.jpg',
+      name: 'Dr. Morepen'
+    },
+    {
+      image: 'https://images.dentalkart.com/media/brand//d/r/dr.-morepen.jpg',
+      name: 'Dr. Morepen'
+    },
+    {
+      image: 'https://images.dentalkart.com/media/brand//d/r/dr.-morepen.jpg',
+      name: 'Dr. Morepen'
+    },
+    {
+      image: 'https://images.dentalkart.com/media/brand//d/r/dr.-morepen.jpg',
+      name: 'Dr. Morepen'
+    }
+  ];
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -127,10 +942,40 @@ export const Home = () => {
     setAnchorEl(null);
   };
 
+  const [step, setStep] = useState(1);
+
+  const handleLeftArrow = () => {
+    if (step === 1) {
+      setStep(3);
+    } else {
+      setStep(step - 1);
+    }
+  };
+
+  const handleRightArrow = () => {
+    if (step === 3) {
+      setStep(1);
+    } else {
+      setStep(step + 1);
+    }
+  };
+
+  const goToSlide1 = () => {
+    setStep(1);
+  };
+
+  const goToSlide2 = () => {
+    setStep(2);
+  };
+
+  const goToSlide3 = () => {
+    setStep(3);
+  };
+
   return (
     <div className={classes.homeContainer}>
       <div className={classes.root}>
-        <AppBar position="static"  style={{background:"black"}}>
+        <AppBar position="static" style={{ background: 'black' }}>
           <Toolbar>
             <div className={classes.title} />
             <Button color="inherit">download our app</Button>
@@ -214,90 +1059,181 @@ export const Home = () => {
         </AppBar>
       </div>
       <div className={classes.pageContent}>
-        <div className={classes.topBanner}>
+        <div className={classes.topBanner} style={{background:"lightblue",marginTop:"5px"}}>
           Pickup & Deliveries are Impacted Due to Night Curfew & Lockdown in
           Several States & Union Territories Across the Country
         </div>
-        {[
-          {
-            header: 'covid 19 best seller',
-            products: [
-              {
-                image: 'https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg',
-                header: '',
-                subHeader: '',
-                oldCost: '',
-                newCost: '',
-                discount: '',
-                stars: '',
-                reviews: ''
-              },
-              {image: '',
-                header: '',
-                subHeader: '',
-                oldCost: '',
-                newCost: '',
-                discount: '',
-                stars: '',
-                reviews: ''},
-              {image: '',
-                header: '',
-                subHeader: '',
-                oldCost: '',
-                newCost: '',
-                discount: '',
-                stars: '',
-                reviews: ''},
-              {image: '',
-                header: '',
-                subHeader: '',
-                oldCost: '',
-                newCost: '',
-                discount: '',
-                stars: '',
-                reviews: ''},
-              {image: '',
-                header: '',
-                subHeader: '',
-                oldCost: '',
-                newCost: '',
-                discount: '',
-                stars: '',
-                reviews: ''},
-              {image: '',
-                header: '',
-                subHeader: '',
-                oldCost: '',
-                newCost: '',
-                discount: '',
-                stars: '',
-                reviews: ''}
-            ],
-            images: [
-              'https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg',
-              'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg',
-              'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'
-            ]
-          },
-          { header: 'super endo',
-           images: ['https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'] },
-          { header: 'best seller',
-           images: ['https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'] },
-          { header: 'covid 19 best seller', 
-          images: ['https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'] },
-          { header: 'covid 19 best seller',
-           images: ['https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'] },
-          { header: 'covid 19 best seller',
-           images: ['https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'] },
-          { header: 'covid 19 best seller',
-           images: ['https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'] },
-          { header: 'covid 19 best seller',
-           images: ['https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'] },
-          { header: 'covid 19 best seller',
-           images: ['https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'] },
-          { header: 'covid 19 best seller',
-           images: ['https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg', 'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'] }
-        ].map((item, index) => {
+        <div className="wrapper">
+          <div className="content">
+            <div className="left-arrow" onClick={handleLeftArrow}>
+              <KeyboardArrowLeftIcon color="primary" />
+            </div>
+
+            {step === 1 && (
+              <motion.div
+                className="img-box"
+                variants={imgBoxVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                <img
+                  src="https://images.dentalkart.com/media/homepage/slider/default/Covid-19-Antigen-Test.jpg"
+                  alt="img1"
+                />
+              </motion.div>
+            )}
+
+            {step === 2 && (
+              <motion.div
+                className="img-box"
+                variants={imgBoxVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                <img
+                  src="https://images.dentalkart.com/media/homepage/slider/default/Pulse-oximeter_1_.jpg"
+                  alt="img2"
+                />
+              </motion.div>
+            )}
+
+            {step === 3 && (
+              <motion.div
+                className="img-box"
+                variants={imgBoxVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                <img
+                  src="https://images.dentalkart.com/media/homepage/slider/default/Waldent-Face-Mask.jpg"
+                  alt="img3"
+                />
+              </motion.div>
+            )}
+
+            <div className="right-arrow" onClick={handleRightArrow}>
+              <KeyboardArrowRightIcon color="primary" />
+            </div>
+          </div>
+
+          <div className="indicators-box">
+            {step === 1 && (
+              <>
+                <div className="indicator active" />
+                <div className="indicator" onClick={goToSlide2} />
+                <div className="indicator" onClick={goToSlide3} />
+              </>
+            )}
+
+            {step === 2 && (
+              <>
+                <div className="indicator" onClick={goToSlide1} />
+                <div className="indicator active" />
+                <div className="indicator" onClick={goToSlide3} />
+              </>
+            )}
+
+            {step === 3 && (
+              <>
+                <div className="indicator" onClick={goToSlide1} />
+                <div className="indicator" onClick={goToSlide2} />
+                <div className="indicator active" />
+              </>
+            )}
+          </div>
+        </div>
+        <div>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              padding: '0 16px'
+            }}
+          >
+            <div>Top Brands</div>
+            <Button variant="contained" color="secondary">
+              View All Brands
+            </Button>
+          </div>
+          <div
+            style={{
+              marginTop: '32px',
+              display: 'flex',
+              justifyContent: 'space-around'
+            }}
+          >
+            {topBrands.map((topBrand, index) => {
+              return (
+                <div key={index}>
+                  <div
+                    style={{
+                      height: '100px',
+                      width: '100px',
+                      border: '1px solid grey',
+                      borderRadius: '50%',
+                      backgroundColor: 'white',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}
+                  >
+                    <img src={topBrand.image} />
+                  </div>
+                  <div style={{ textAlign: 'center' }}>{topBrand.name}</div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <div style={{ display: 'flex', height: '280px', margin: '16px 0' }}>
+          <div
+            style={{
+              width: '75%'
+            }}
+          >
+            <div
+              style={{
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between'
+              }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  padding: '0 16px'
+                }}
+              >
+                <div>Featured Categories</div>
+                <Button variant="contained" color="secondary">
+                  View All Categories
+                </Button>
+              </div>
+              <div className={classes.bannerContainer}>
+                {[
+                  'https://images.dentalkart.com/media/homepage/banner/default/default_default_Combo-Offers-mobile.jpg',
+                  'https://images.dentalkart.com/media/homepage/banner/default/GC-Gold-Lable_Mobile.jpg',
+                  'https://images.dentalkart.com/media/homepage/banner/default/default_default_default_default_default_default_Combo-Offers.jpg'
+                ].map((image, index) => {
+                  return (
+                    <Card key={index} className={classes.banner}>
+                      <img src={image} />
+                    </Card>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+          <div style={{ width: '25%', textAlign: 'center' }}>
+            <img
+              style={{ width: 'auto', height: '100%' }}
+              src="https://dentalkart-media.s3.ap-south-1.amazonaws.com/App-banner+(2).jpg"
+            />
+          </div>
+        </div>
+        {dataArray.map((item, index) => {
           return (
             <div key={index}>
               <Card className={classes.productContainer}>
@@ -312,32 +1248,59 @@ export const Home = () => {
                 <Divider />
                 <CardContent>
                   <div className={classes.products}>
-                    {[1, 2, 3, 4, 5, 6].map(i => {
+                    {item.products.map((product, index) => {
                       return (
-                        <Card className={classes.mediaRoot}>
+                        <Card key={index} className={classes.mediaRoot}>
                           <CardActionArea>
                             <CardMedia
                               className={classes.media}
-                              image="https://images.dentalkart.com/media/catalog/product/f/e/features_5.jpg"
-                              title="Contemplative Reptile"
+                              image={product.image}
                             />
                             <CardContent>
-                              <Typography
-                                gutterBottom
-                                variant="h5"
-                                component="h2"
+                              <div
+                                style={{
+                                  fontWeight: 'bold',
+                                  fontSize: 'large',
+                                  width: '100%',
+                                  overflow: 'hidden',
+                                  whiteSpace: 'nowrap',
+                                  textOverflow: 'ellipsis'
+                                }}
                               >
-                                Lizard
-                              </Typography>
-                              <Typography
-                                variant="body2"
-                                color="textSecondary"
-                                component="p"
+                                {product.header}
+                              </div>
+                              <div
+                                style={{
+                                  width: '100%',
+                                  overflow: 'hidden',
+                                  whiteSpace: 'nowrap',
+                                  textOverflow: 'ellipsis'
+                                }}
                               >
-                                Lizards are a widespread group of squamate
-                                reptiles, with over 6,000 species, ranging
-                                across all continents except Antarctica
-                              </Typography>
+                                {product.subHeader}
+                              </div>
+                              <div
+                                style={{
+                                  display: 'flex',
+                                  justifyContent: 'space-around'
+                                }}
+                              >
+                                <span>
+                                  <del> Rs.{product.oldCost}</del>
+                                </span>
+                                <span>Rs.{product.newCost}</span>
+                                <span>{product.discount}% Off</span>
+                              </div>
+                              <div>
+                                {Array.from(Array(+product.stars).keys()).map(
+                                  (star, index) => {
+                                    return (
+                                      <StarIcon color="secondary" key={index} />
+                                    );
+                                  }
+                                )}
+                              </div>
+                              <div>({product.reviews} reviews)</div>
                             </CardContent>
                           </CardActionArea>
                         </Card>
@@ -350,9 +1313,7 @@ export const Home = () => {
                 {item.images.map((image, index) => {
                   return (
                     <Card key={index} className={classes.banner}>
-                      {/* {image} */}
                       <img src={image} />
-                      
                     </Card>
                   );
                 })}
@@ -360,7 +1321,7 @@ export const Home = () => {
             </div>
           );
         })}
-        <div className={classes.root}>
+        <div style={{ marginTop: '16px' ,background:"black" }} className={classes.root}>
           <AppBar position="static">
             <Toolbar>
               <div>
@@ -386,7 +1347,6 @@ export const Home = () => {
                 <div>Terms of Use</div>
                 <div>Privacy</div>
                 <div>Sitemap</div>
-               
               </div>
               <div className={classes.title} />
 
@@ -396,7 +1356,7 @@ export const Home = () => {
                 <div>pintrest</div>
                 <div>Youtube</div>
                 <div>Linkdin</div>
-                 <div>Instagram</div>
+                <div>Instagram</div>
               </div>
               <div className={classes.title} />
 
@@ -412,7 +1372,6 @@ export const Home = () => {
               <div>
                 <div>Android IOS </div>
                 {/* <div>IOS</div> */}
-                
               </div>
             </Toolbar>
           </AppBar>
