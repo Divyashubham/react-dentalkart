@@ -1321,8 +1321,8 @@ export const Home = () => {
             </div>
           );
         })}
-        <div style={{ marginTop: '16px' ,background:"black" }} className={classes.root}>
-          <AppBar position="static">
+        <div style={{ marginTop: '16px'}} className={classes.root}>
+          <AppBar position="static" style={{background:"black"}}>
             <Toolbar>
               <div>
                 <div>About</div>
